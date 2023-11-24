@@ -1,6 +1,7 @@
 CREATE OR ALTER PROCEDURE [dbo].[MonthlyBalanceReport]
     @TotalEarned DECIMAL(18, 2) OUTPUT,
-    @TotalSpent DECIMAL(18, 2) OUTPUT
+    @TotalSpent DECIMAL(18, 2) OUTPUT,
+    @Date DATE
 AS
 BEGIN TRANSACTION
     SELECT 
@@ -10,6 +11,9 @@ BEGIN TRANSACTION
     FROM [Transaction]
         RIGHT JOIN [Category]
             ON [Category].[Id] = [Transaction].[CategoryId]
+    WHERE 
+        YEAR([Transaction].[Date]) = YEAR(@Date) AND
+        MONTH([Transaction].[Date]) = MONTH(@Date)
     GROUP BY 
         [Transaction].[CategoryId],
         [Category].[Name]
