@@ -1,4 +1,4 @@
-CREATE OR ALTER PROCEDURE [dbo].[InsertTransaction]
+CREATE OR ALTER PROCEDURE [dbo].[Transaction_Insert]
     @Description VARCHAR(200),
     @Amount float,
     @TransactionType int,
