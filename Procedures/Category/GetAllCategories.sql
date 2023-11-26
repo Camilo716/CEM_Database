@@ -1,6 +1,0 @@
-CREATE OR ALTER PROCEDURE [dbo].[GetAllCategories]
-AS 
-BEGIN TRANSACTION
-    SELECT *
-    FROM [dbo].[Category]
-COMMIT
